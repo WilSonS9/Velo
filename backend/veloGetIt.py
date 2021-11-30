@@ -1,3 +1,5 @@
+# AWS lambda function to fetch the all-time energy production for all users
+
 import boto3
 import json
 from decimal import Decimal

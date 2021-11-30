@@ -1,4 +1,4 @@
-# AWS lambda function to fetch the latest array of voltages
+# AWS lambda function that returns whether or not a user is currently logged in as well as the currently logged in user
 
 import boto3
 import json
@@ -18,16 +18,20 @@ def lambda_handler(event, context):
     try:
         table = dynamodb.Table('VeloDB')
         response = table.query(
-            KeyConditionExpression=Key('Bicycle ID').eq(event["queryStringParameters"]['BicycleID'])
+            KeyConditionExpression=Key('Bicycle ID').eq('0')
         )
+        # if response['Items'][0]['isLoggedIn'] == '1':
+        #     response2 = 'True'
+        # else:
+        #     response2 = 'False'
         response2 = {
           "statusCode": 200,
-          "body": json.dumps(response['Items'][0]['Voltage'][-1], cls=DecimalEncoder)
+          "body": json.dumps((response['Items'][0]['isLoggedIn'], response['Items'][0]['currentUser']), cls=DecimalEncoder)
         }
         return response2
     except:
         response2 = {
             "statusCode": 400,
-            "body": json.dumps(event["queryStringParameters"])
+            "body": json.dumps('such wow, much except')
         }
         return response2
