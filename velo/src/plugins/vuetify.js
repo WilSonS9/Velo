@@ -1,9 +1,22 @@
-import Vue from 'vue'
-import Vuetify from 'vuetify'
-import 'vuetify/dist/vuetify.min.css'
+import Vue from "vue";
+import Vuetify from "vuetify";
+import "vuetify/dist/vuetify.min.css";
 
-Vue.use(Vuetify)
+Vue.use(Vuetify);
 
-const opts = {}
-
-export default new Vuetify(opts)
+export default new Vuetify({
+  theme: {
+    light: true,
+    options: {
+      customProperties: true,
+    },
+    themes: {
+      light: {
+        primary: "#1976D2",
+        secondary: "#b0bec5",
+        accent: "#8c9eff",
+        error: "#b71c1c",
+      },
+    },
+  },
+});

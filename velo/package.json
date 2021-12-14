@@ -24,10 +24,16 @@
     "cordova-serve-osx": "cross-env CORDOVA_PLATFORM=osx vue-cli-service cordova-serve-osx"
   },
   "dependencies": {
+    "@aws-sdk/client-dynamodb": "^3.34.0",
+    "apexcharts": "^3.31.0",
+    "axios": "^0.24.0",
+    "chart.js": "^2.9.4",
     "cordova": "^10.0.0",
     "cordova-common": "^4.0.2",
     "core-js": "^3.6.5",
     "vue": "^2.6.11",
+    "vue-apexcharts": "^1.6.2",
+    "vue-chartjs": "^3.5.1",
     "vue-router": "^3.5.1",
     "vuetify": "^2.4.0",
     "vuex": "^3.6.2"

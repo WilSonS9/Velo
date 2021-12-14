@@ -1,18 +1,34 @@
 <template>
   <div class="home">
-    <img alt="Vue logo" src="../assets/lg.png">
-    <HelloWorld msg="Welcome to Your Vue.js App"/>
+    <Chart />
+    <div class="container">
+      <h1>Exerted Power: 3kW</h1>
+      <h1>Generator Usage: 200%</h1>
+    </div>
   </div>
 </template>
 
 <script>
 // @ is an alias to /src
-import HelloWorld from '@/components/HelloWorld.vue'
+import Chart from "@/components/chart.vue";
 
 export default {
-  name: 'Home',
+  name: "Home",
   components: {
-    HelloWorld
-  }
-}
+    Chart,
+  },
+};
 </script>
+
+<style>
+.container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 1rem;
+}
+h1 {
+  text-align: center;
+  margin: auto;
+}
+</style>
