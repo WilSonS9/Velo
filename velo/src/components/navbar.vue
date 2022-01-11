@@ -8,10 +8,10 @@
         <ul class="nav__links">
           <li><a href="/stats">Stats</a></li>
           <li><a href="/about">About</a></li>
-          <li><a href="#">Login</a></li>
+          <li><a href="/login">Login</a></li>
         </ul>
       </nav>
-      <a class="cta" href="#">Contact</a>
+      <!-- <a class="cta" href="#">Contact</a> -->
       <p class="menu cta" @click="isActive = true">Menu</p>
     </header>
     <div id="mobile__menu" class="overlay" :class="{ overlayActive: isActive }">
@@ -19,7 +19,7 @@
       <div class="overlay__content">
         <a href="/stats">Stats</a>
         <a href="/about">About</a>
-        <a href="#">Login</a>
+        <a href="/login">Login</a>
       </div>
     </div>
   </div>

@@ -3,21 +3,27 @@
     <div class="stats stats--user">
       <h1 class="text-main">User Stats</h1>
       <h2>You have generated enough energy to:</h2>
-      <ul class="list">
-        <li v-for="(nrg, i) in active" :key="i">
-          {{ reqEn[nrg].message }}
-        </li>
-      </ul>
-    </div>
 
-    <div class="stats stats--velo">
-      <h1 class="text-main">VELO Stats</h1>
-      <h2>The VELO community has generated enough energy to:</h2>
       <ul class="list">
         <li>Mine 50 000 BTC</li>
         <li>Charge 1 Tesla for 1</li>
       </ul>
     </div>
+    <div class="stats stats--velo">
+      <h1 class="text-main">VELO Stats</h1>
+      <h2>The VELO community has generated enough energy to:</h2>
+      <ul class="list">
+        <li v-for="(nrg, i) in active" :key="i">
+          {{
+            reqEn[nrg].message.replace(
+              "$(amount)",
+              replaceEnergy(reqEn[nrg].energy)
+            )
+          }}
+        </li>
+      </ul>
+    </div>
+
     <img class="stats" src="../assets/greenplanet.jpg" alt="" />
   </div>
 </template>
@@ -79,6 +85,9 @@ export default {
       });
       this.active.push(temp[0][0]);
       this.active.push(temp[1][0]);
+    },
+    replaceEnergy(energy) {
+      return (this.allTime / energy).toFixed(2);
     },
   },
   async mounted() {
