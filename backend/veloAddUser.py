@@ -15,10 +15,10 @@ class DecimalEncoder(json.JSONEncoder):
     return json.JSONEncoder.default(self, obj)
 
 def lambda_handler(event, context):
-    try:
+    # try:
         table = dynamodb.Table('VeloDB')
-        u = event['queryStringParameters']['username']
-        p = event["queryStringParameters"]['password']
+        u = event['username']
+        p = event['password']
         # u = event['username']
         # p = event['password']
         r = table.query(
@@ -29,7 +29,8 @@ def lambda_handler(event, context):
             'Bicycle ID': uid,
             'username': u,
             'password': p,
-            'Voltage': [{}]
+            'Power': [[]],
+            'Energy': [[]]
         }
         
         table.put_item(Item=item)
@@ -44,7 +45,7 @@ def lambda_handler(event, context):
         }
         
         return response2
-    except:
+    # except:
         response2 = {
             "statusCode": 400,
             "body": json.dumps('Could not add user')

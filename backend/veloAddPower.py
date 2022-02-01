@@ -17,20 +17,23 @@ class DecimalEncoder(json.JSONEncoder):
 def lambda_handler(event, context):
     # try:
         table = dynamodb.Table('VeloDB')
-        ID = str(event['queryStringParameters']['Bicycle ID'])
-        t = str(event["queryStringParameters"]['time'])
-        v = Decimal(str(event["queryStringParameters"]['value']))
+        ID = str(event['Bicycle ID'])
+        e = Decimal(str(event['energy']))
+        p = Decimal(str(event['power']))
         r = table.query(
             KeyConditionExpression=Key('Bicycle ID').eq(ID))
         
-        volt = r['Items'][0]['Voltage']
-        volt[-1][t] = v
+        power = r['Items'][0]['Power']
+        power[-1].append(p)
+        energy = r['Items'][0]['Energy']
+        energy[-1].append(e)
         
         item = {
             'Bicycle ID': ID,
             'username': r['Items'][0]['username'],
             'password': r['Items'][0]['username'],
-            'Voltage': volt
+            'Power': power,
+            'Energy': energy
         }
         
         table.put_item(Item=item)
@@ -38,7 +41,7 @@ def lambda_handler(event, context):
         
         response2 = {
             "statusCode": 200,
-            "body": json.dumps('Power added!')
+            "body": json.dumps('Power and energy added!')
         }
         
         return response2

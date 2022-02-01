@@ -18,16 +18,16 @@ def lambda_handler(event, context):
     try:
         table = dynamodb.Table('VeloDB')
         response = table.query(
-            KeyConditionExpression=Key('Bicycle ID').eq(event["queryStringParameters"]['BicycleID'])
+            KeyConditionExpression=Key('Bicycle ID').eq(event['BicycleID'])
         )
         response2 = {
           "statusCode": 200,
-          "body": json.dumps(response['Items'][0]['Voltage'][-1], cls=DecimalEncoder)
+          "body": json.dumps(response['Items'][0]['Power'][-1], cls=DecimalEncoder)
         }
         return response2
     except:
         response2 = {
             "statusCode": 400,
-            "body": json.dumps(event["queryStringParameters"])
+            "body": json.dumps(event)
         }
         return response2
