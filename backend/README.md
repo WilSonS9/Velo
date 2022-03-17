@@ -15,6 +15,8 @@ Returnerar på formen `[Power, Energy]`
 Request: `GET https://8s6uuofzza.execute-api.us-east-1.amazonaws.com/getLatestPower?BicycleID=1`
 Response: `[["2", "2"], ["4.3", "4.3"]]` (Power första, Energy andra)
 
+---
+
 ### `/getIt`
 #### Beskrivning
 Hämtar totala energin producerad av alla Velo-användare
@@ -26,6 +28,8 @@ Inga argument
 Request: `GET https://8s6uuofzza.execute-api.us-east-1.amazonaws.com/getIt`
 Response: `"34.6"`
 
+---
+
 ### `/getItUser`
 #### Beskrivning
 Hämtar totala energin producerad av en viss Velo-användare
@@ -36,6 +40,8 @@ Returnerar ett flyttal
 #### Exempel
 Request: `GET https://8s6uuofzza.execute-api.us-east-1.amazonaws.com/getItUser?BicycleID=1`
 Response: `"34.6"`
+
+---
 
 ### `/isLoggedIn`
 #### Beskrivning
@@ -49,6 +55,8 @@ Inga argument
 Request: `GET https://8s6uuofzza.execute-api.us-east-1.amazonaws.com/isLoggedIn`
 Response: `[false, "0"]`
 
+---
+
 ### `/onLogIn`
 #### Beskrivning
 POST request som körs för att logga in någon
@@ -61,6 +69,8 @@ Returnerar `"Login Failed"` om det inte gick, annars `["User logged in!", Bicycl
 Request: `POST https://8s6uuofzza.execute-api.us-east-1.amazonaws.com/onLogIn?username=user&pass=pass`
 Response: `["User logged in!", "1"]`
 
+---
+
 ### `/onLogOut`
 #### Beskrivning
 POST request som körs för att logga ut den nuvarande inloggade användaren
@@ -71,6 +81,8 @@ Inga argument (den nuvarande inloggade användaren lagras alltid i databasen då
 #### Exempel
 Request: `POST https://8s6uuofzza.execute-api.us-east-1.amazonaws.com/onLogOut`
 Response: `"User logged out!"`
+
+---
 
 ### `/addUser`
 #### Beskrivning
@@ -83,6 +95,8 @@ Returnerar `"User added!"` om det lyckas
 #### Exempel
 Request: `POST https://8s6uuofzza.execute-api.us-east-1.amazonaws.com/addUser?username=pogUser&pass=superPass`
 Response: `"User added!"`
+
+---
 
 ### `/addPowerEnergy`
 #### Beskrivning
