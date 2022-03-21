@@ -44,7 +44,7 @@ export default {
         },
         Toast: {
           name: "Toast",
-          energy: 3600,
+          energy: 72000,
           message: "Toast $(amount) bread",
           mod: 0,
         },
@@ -66,7 +66,7 @@ export default {
   methods: {
     async fetchData() {
       const res = await axios.get(
-        "https://pbh9b34d7e.execute-api.us-east-1.amazonaws.com/Prod/veloalltime"
+        "https://8s6uuofzza.execute-api.us-east-1.amazonaws.com/getIt"
       );
       this.allTime = res.data;
       for (let i in this.reqEn) {
