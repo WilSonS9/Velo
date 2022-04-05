@@ -16,7 +16,7 @@
             required
           ></v-text-field>
           <v-card-actions>
-            <v-btn type="submit" color="rgb(103, 209, 99)" :disabled="!valid">
+            <v-btn type="submit" color="#67d163" :disabled="!valid">
               Save
             </v-btn>
           </v-card-actions>
