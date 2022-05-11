@@ -82,10 +82,14 @@ export default {
   methods: {
     async fetchData() {
       const res = await axios.get(
-        "https://8s6uuofzza.execute-api.us-east-1.amazonaws.com/getLatestPower?BicycleID=1"
+        "https://8fbddwr1ga.execute-api.us-east-1.amazonaws.com/fetchPower?BicycleID=2"
       );
 
+      this.wattageSeries[0].data = [];
+      this.energySeries[0].data = [];
+
       const time = res.data[0][0][0];
+
       for (let i in res.data[0]) {
         res.data[0][i][0] = res.data[0][i][0] - time;
         this.wattageSeries[0].data.push(res.data[0][i]);
@@ -101,6 +105,11 @@ export default {
   async created() {
     await this.fetchData();
   },
+  // async mounted() {
+  //   window.setInterval(() => {
+  //     this.fetchData();
+  //   }, 5000);
+  // },
 };
 </script>
 
@@ -111,21 +120,5 @@ export default {
 .divider {
   margin-bottom: 2rem;
   margin-top: 2rem;
-}
-::-webkit-scrollbar {
-  width: 8px;
-}
-
-::-webkit-scrollbar-track {
-  background-color: #24252a;
-  border-radius: 100px;
-}
-
-::-webkit-scrollbar-thumb {
-  border-radius: 100px;
-  border: 6px solid rgba(0, 0, 0, 0.18);
-  border-left: 0;
-  border-right: 0;
-  background-color: #67d163;
 }
 </style>

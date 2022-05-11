@@ -32,6 +32,15 @@ export default {
       isActive: false,
     };
   },
+  watch: {
+    isActive(val) {
+      let el = document.getElementsByClassName("apexcharts-toolbar");
+
+      for (let i = 0; i < el.length; i++) {
+        el[i].style.display = val ? "none" : "flex";
+      }
+    },
+  },
 };
 </script>
 

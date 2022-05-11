@@ -11,13 +11,13 @@
     </div>
     <div class="stats stats--velo">
       <h1 class="text-main">VELO Stats</h1>
-      <h2>The VELO community has generated enough energy to:</h2>
+      <h2>The VELO community has generated {{ allTime }}J energy enough to:</h2>
       <ul class="list">
         <li v-for="(nrg, i) in active" :key="i">
           {{
             reqEn[nrg].message.replace(
               "$(amount)",
-              replaceEnergy(reqEn[nrg].energy)
+              replaceEnergy(reqEn[nrg].energy, allTime)
             )
           }}
         </li>
@@ -34,6 +34,8 @@ export default {
   data() {
     return {
       active: [],
+      userActive: [],
+      userAllTime: [],
       allTime: 0,
       reqEn: {
         BTC: {
@@ -66,7 +68,7 @@ export default {
   methods: {
     async fetchData() {
       const res = await axios.get(
-        "https://8s6uuofzza.execute-api.us-east-1.amazonaws.com/getIt"
+        "https://8fbddwr1ga.execute-api.us-east-1.amazonaws.com/getIt"
       );
       this.allTime = res.data;
       for (let i in this.reqEn) {
@@ -86,8 +88,8 @@ export default {
       this.active.push(temp[0][0]);
       this.active.push(temp[1][0]);
     },
-    replaceEnergy(energy) {
-      return (this.allTime / energy).toFixed(2);
+    replaceEnergy(energy, allTime) {
+      return (allTime / energy).toFixed(2);
     },
   },
   async mounted() {
@@ -109,10 +111,13 @@ export default {
 
 .stats {
   margin-bottom: 2rem;
-  width: 500px;
+  width: 25%;
+  text-align: center;
 }
 .list {
   margin: 1rem;
+  text-align: center;
+  list-style: none;
 }
 img {
   max-width: 100%;

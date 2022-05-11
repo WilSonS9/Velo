@@ -26,7 +26,7 @@ export default {
   methods: {
     async fetchData() {
       const res = await axios.get(
-        "https://8s6uuofzza.execute-api.us-east-1.amazonaws.com/getLatestPower?BicycleID=1"
+        "https://8fbddwr1ga.execute-api.us-east-1.amazonaws.com/fetchPower?BicycleID=2"
       );
 
       this.latest = res.data[0].slice(-1)[0][1];
