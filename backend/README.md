@@ -1,5 +1,5 @@
 # Velo API
-URL för alla requests: `https://8s6uuofzza.execute-api.us-east-1.amazonaws.com/`
+URL för alla requests: `https://8fbddwr1ga.execute-api.us-east-1.amazonaws.com`
 
 Alla requests använder sig av Query String Parameters, inga request bodies, authentication eller authorization behövs
 ## Endpoints
@@ -7,7 +7,7 @@ Här är alla endpoints
 
 ---
 
-### `/getLatestPower`
+### `/fetchPower`
 #### Beskrivning
 Hämtar all power och energy för den nuvarande (senaste) sessionen för en viss användare
 
@@ -18,7 +18,7 @@ Returnerar på formen `[Power, Energy]`
 - `BicycleId`: ID för önskade användaren [string]
 
 #### Exempel
-Request: `GET https://8s6uuofzza.execute-api.us-east-1.amazonaws.com/getLatestPower?BicycleID=1`
+Request: `GET https://8fbddwr1ga.execute-api.us-east-1.amazonaws.com/fetchPower?BicycleID=1`
 
 Response: `[["2", "2"], ["4.3", "4.3"]]` (Power första, Energy andra)
 
@@ -33,7 +33,7 @@ Returnerar ett flyttal
 Inga argument
 
 #### Exempel
-Request: `GET https://8s6uuofzza.execute-api.us-east-1.amazonaws.com/getIt`
+Request: `GET https://8fbddwr1ga.execute-api.us-east-1.amazonaws.com/getIt`
 
 Response: `"34.6"`
 
@@ -48,7 +48,7 @@ Returnerar ett flyttal
 - `BicycleID`: ID för önskad användare [string]
 
 #### Exempel
-Request: `GET https://8s6uuofzza.execute-api.us-east-1.amazonaws.com/getItUser?BicycleID=1`
+Request: `GET https://8fbddwr1ga.execute-api.us-east-1.amazonaws.com/getItUser?BicycleID=1`
 
 Response: `"34.6"`
 
@@ -65,7 +65,7 @@ Returnerar på formen `[isLoggedIn, BicycleID]` där `isLoggedIn` är `true` om 
 Inga argument
 
 #### Exempel
-Request: `GET https://8s6uuofzza.execute-api.us-east-1.amazonaws.com/isLoggedIn`
+Request: `GET https://8fbddwr1ga.execute-api.us-east-1.amazonaws.com/isLoggedIn`
 
 Response: `[false, "0"]`
 
@@ -81,7 +81,7 @@ Returnerar `"Login Failed"` om det inte gick, annars `["User logged in!", Bicycl
 - `pass`: Användarens lösenord [string] (OBS! Lambda kör en direct comparison av det angivna lösenordet och det lagrade lösenordet, så om användarens lösenord är hashat, se till att hasha inputen även här)
 
 #### Exempel
-Request: `POST https://8s6uuofzza.execute-api.us-east-1.amazonaws.com/onLogIn?username=user&pass=pass`
+Request: `POST https://8fbddwr1ga.execute-api.us-east-1.amazonaws.com/onLogIn?username=user&pass=pass`
 
 Response: `["User logged in!", "1"]`
 
@@ -96,7 +96,7 @@ Returnerar `"User logged out!"` om användaren kunde loggas ut, annars om ingen 
 Inga argument (den nuvarande inloggade användaren lagras alltid i databasen då det bara kan vara en användare online vid en given tidpunkt)
 
 #### Exempel
-Request: `POST https://8s6uuofzza.execute-api.us-east-1.amazonaws.com/onLogOut`
+Request: `POST https://8fbddwr1ga.execute-api.us-east-1.amazonaws.com/onLogOut`
 
 Response: `"User logged out!"`
 
@@ -112,7 +112,7 @@ Returnerar `"User added!"` om det lyckas
 - `pass`: Användarens lösenord [string] (OBS! Inputen här läggs direkt in i databasen utan att hashas, se till att vara konsekvent med hashning med `/onLogIn`, det är detta värde som direkt jämförs med i den requesten)
 
 #### Exempel
-Request: `POST https://8s6uuofzza.execute-api.us-east-1.amazonaws.com/addUser?username=pogUser&pass=superPass`
+Request: `POST https://8fbddwr1ga.execute-api.us-east-1.amazonaws.com/addUser?username=pogUser&pass=superPass`
 
 Response: `"User added!"`
 
@@ -129,6 +129,6 @@ Returnerar `"Power and energy added!"` om det lyckas
 - `energy`: Energin som ska läggas in [float] (kom ihåg att detta är den senaste *totala* energin för sessionen, inte sedan senaste mätning)
 
 #### Exempel
-Request: `POST https://8s6uuofzza.execute-api.us-east-1.amazonaws.com/addPowerEnergy?BicycleID=1&energy=4.3&power=2`
+Request: `POST https://8fbddwr1ga.execute-api.us-east-1.amazonaws.com/addPowerEnergy?BicycleID=1&energy=4.3&power=2`
 
 Response: `"Power and energy added!"`
