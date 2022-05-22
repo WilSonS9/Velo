@@ -5,14 +5,22 @@
       <h2>You have generated enough energy to:</h2>
 
       <ul class="list">
-        <li>Mine 50 000 BTC</li>
-        <li>Charge 1 Tesla for 1</li>
+        <li>Mine 8.6 Bitcoin</li>
+        <li>Power a household for 1.6 hours</li>
       </ul>
     </div>
     <div class="stats stats--velo">
       <h1 class="text-main">VELO Stats</h1>
-      <h2>The VELO community has generated {{ allTime }}J energy enough to:</h2>
+      <h2>
+        The VELO community has generated 100kJ of energy, enough to:
+      </h2>
       <ul class="list">
+        <li>
+          Toast 12.4 slices of bread
+        </li>
+        <li>Charge a tesla for 1.2 hours</li>
+      </ul>
+      <!-- <ul class="list">
         <li v-for="(nrg, i) in active" :key="i">
           {{
             reqEn[nrg].message.replace(
@@ -21,7 +29,7 @@
             )
           }}
         </li>
-      </ul>
+      </ul> -->
     </div>
 
     <img class="stats" src="../assets/greenplanet.jpg" alt="" />
@@ -98,6 +106,9 @@ export default {
 };
 </script>
 <style>
+li {
+  font-size: 1.2rem;
+}
 .container {
   display: flex;
   flex-direction: column;
